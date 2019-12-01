@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}\t[%thread]\t%-5level\t%logger\t-\t%msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	<!-- 按照每天生成日志文件 -->
+	<appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/opt/logs/sangtao/suer-web/suer-web.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/opt/logs/sangtao/suer-web/logs/suer-web.log.%d{yyyy-MM-dd}-%i
+			</fileNamePattern>
+			<MaxHistory>30</MaxHistory>
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>10MB</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}\t[%thread]\t%-5level\t%logger\t-\t%msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<!-- 错误日志文件 -->
+	<appender name="warnLogFile"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/opt/logs/sangtao/suer-web/warn/csuer-web.warn.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/opt/logs/sangtao/suer-web/warn/suer-web.warn.log.%d{yyyy-MM-dd}-%i
+			</fileNamePattern>
+			<MaxHistory>30</MaxHistory>
+			<!--日志文件最大的大小-->
+			<TimeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>20MB</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}\t[%thread]\t%-5level\t%logger\t-\t%msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>WARN</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<!-- 错误日志文件 -->
+	<appender name="errLogFile"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/opt/logs/sangtao/suer-web/error/suer-web.error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/opt/logs/sangtao/suer-web/error/suer-web.error.log.%d{yyyy-MM-dd}-%i
+			</fileNamePattern>
+			<MaxHistory>30</MaxHistory>
+			<!--日志文件最大的大小-->
+			<TimeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>20MB</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}\t[%thread]\t%-5level\t%logger\t-\t%msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+	</appender>
+    <logger name="org.apache.commons.httpclient.util.IdleConnectionHandler" level="error" />
+    <logger name="org.springframework.web.servlet.DispatcherServlet" level="error" />
+    <logger name="org.springframework.web.socket.server.support.WebSocketHandlerMapping" level="error" />
+    <logger name="springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping" level="error" />
+    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="error" />
+    <logger name="org.springframework.web.socket.server.support.WebSocketHttpRequestHandler" level="error" />
+    <logger name="org.springframework.web.socket.server.support.DefaultHandshakeHandler" level="OFF"  />
+	<!-- 日志输出级别 -->
+	<root level="debug">
+		<appender-ref ref="stdout" />
+		<appender-ref ref="logFile" />
+		<appender-ref ref="warnLogFile" />
+		<appender-ref ref="errLogFile" />
+	</root>
+</configuration>

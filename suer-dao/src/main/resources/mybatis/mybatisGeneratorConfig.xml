@@ -1,0 +1,29 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="simple" targetRuntime="MyBatis3Simple">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3307/door" userId="root" password="" />
+        <javaModelGenerator targetPackage="com.sangtao.model" targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="com.sangtao.dao" targetProject="src/main/resources"/>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sangtao.dao" targetProject="src/main/java"/>
+
+        <!--<table tableName="sys_resources"/>-->
+        <table tableName="tb_account" domainObjectName="Account"/>
+        <!--<table tableName="tb_account_info" domainObjectName="AccountInfo"/>-->
+        <!--<table tableName="tb_role" domainObjectName="Role"/>-->
+        <!--<table tableName="tr_company_relation" domainObjectName="CompanyRelation"/>-->
+        <!--<table tableName="tr_role_resource" domainObjectName="RoleResource"/>-->
+        <!--<table tableName="tr_user_role" domainObjectName="UserRole"/>-->
+
+        <!--<table tableName="tb%" >-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--<domainObjectRenamingRule searchString="^Tb" replaceString="" />-->
+            <!--<columnRenamingRule searchString="^[^_]+" replaceString=""/>-->
+        <!--</table>-->
+
+
+    </context>
+</generatorConfiguration>
