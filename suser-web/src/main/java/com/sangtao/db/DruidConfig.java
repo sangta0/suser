@@ -69,7 +69,7 @@ public class DruidConfig {
 
     @Bean
     public DataSource druidDataSource() {
-        DruidDataSource dataSource =  new DruidDataSource();
+        DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(jdbcUrl);
         dataSource.setUsername(username);
         dataSource.setPassword(password);

@@ -9,5 +9,5 @@ import javax.servlet.annotation.WebServlet;
         @WebInitParam(name = "loginPassword", value = "admin"), // 密码
         @WebInitParam(name = "resetEnable", value = "false")})
 public class DruidStatViewServlet extends StatViewServlet {
-        private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 }

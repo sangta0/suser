@@ -13,12 +13,12 @@ public class AccountController {
     AccountServiceEx accountServiceEx;
 
     @GetMapping("/getAccount")
-    public AccountInfo getAccount(@RequestParam String accountId){
+    public AccountInfo getAccount(@RequestParam String accountId) {
         return accountServiceEx.getAccount(accountId);
     }
 
     @PostMapping("/addAccount")
-    public int addAccount(@RequestBody Account account){
+    public int addAccount(@RequestBody Account account) {
         return accountServiceEx.addAccount(account);
     }
 }
