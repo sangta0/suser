@@ -11,3 +11,8 @@
 ## 可能遇到的问题
 * spring boot 启动失败，检查启动文件路径，是否在包内
 * 跨域请求头设置 WebMvcConfigurerAdapter已废弃，现在实现WebMvcConfigurer的具体方法即可
+
+## 改造过程
+* branch:suser-spring-cloud  
+添加spring-cloud(eureka,feign,zookeeper)
+ 
