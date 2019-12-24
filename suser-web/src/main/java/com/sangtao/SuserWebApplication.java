@@ -4,6 +4,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
@@ -13,6 +16,9 @@ import org.springframework.context.annotation.PropertySource;
  * 原因：druid监控页面是一个servlet，需要让SpingBoot支持servlet.在程序入口添加注解
  */
 @ServletComponentScan
+//@EnableEurekaClient
+@EnableFeignClients
+@EnableDiscoveryClient
 public class SuserWebApplication {
     public static void main(String[] args) {
         SpringApplication.run(SuserWebApplication.class, args);

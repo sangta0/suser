@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    zookeeper:
+      discovery:
+        instancePort: 8971 #端口号
+        enabled: true
+        register: true
+      connectString: 127.0.0.1:2181 # 多节点配置,通过逗号分割127.0.0.1:2182,127.0.0.1:2183

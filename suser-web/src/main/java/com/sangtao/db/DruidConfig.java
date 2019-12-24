@@ -64,7 +64,7 @@ public class DruidConfig {
     @Value("${spring.datasource.master.filters}")
     private String filters;
 
-    @Value("{spring.datasource.master.connectionProperties}")
+    @Value("${spring.datasource.master.connectionProperties}")
     private String connectionProperties;
 
     @Bean

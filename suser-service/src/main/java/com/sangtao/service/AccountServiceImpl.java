@@ -16,11 +16,16 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     AccountMapper accountMapper;
 
-    public AccountInfo getAccount(String accountId) {
+    public AccountInfo getAccountInfo(String accountId) {
         AccountInfo account = accountInfoMapper.selectByPrimaryKey(accountId);
         return account;
     }
 
+    @Override
+    public Account getAccount(String accountId){
+        Account dto = accountMapper.selectByPrimaryKey(accountId);
+        return dto;
+    }
     public int addAccount(Account account) {
         String uuid = UUID.randomUUID().toString();
         account.setAccountId(uuid);

@@ -14,7 +14,7 @@ public class AccountController {
 
     @GetMapping("/getAccount")
     public AccountInfo getAccount(@RequestParam String accountId) {
-        return accountServiceEx.getAccount(accountId);
+        return accountServiceEx.getAccountInfo(accountId);
     }
 
     @PostMapping("/addAccount")
