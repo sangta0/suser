@@ -14,6 +14,7 @@
         <module>suser-dao</module>
         <module>suser-service</module>
         <module>suser-client</module>
+        <module>suser-monitoring</module>
     </modules>
 
     <properties>

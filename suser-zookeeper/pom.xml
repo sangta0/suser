@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <packaging>jar</packaging>
     <artifactId>suser-zookeeper</artifactId>
 
     <dependencies>
@@ -40,5 +40,24 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <build>
+        <finalName>suser-zookeeper</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.0.2.RELEASE</version>
+                <configuration>
+                    <mainClass>com.sangtao.zookeeper.SuserZookeeperApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -115,3 +115,35 @@ _去除eureka依赖_
 ``` 
 * 7.服务消费者  
 同服务端修改一致
+
+## 添加熔断器
+现在内部服务会轮询请求，如果某个服务挂掉，依然会请求到该服务，现在需要添加熔断器  
+这是官网的四种熔断器  
+[Netfix Hystrix](https://github.com/Netflix/Hystrix) 
+[Resilience4J](https://github.com/resilience4j/resilience4j) 
+[Sentinel](https://github.com/alibaba/Sentinel) 
+[Spring Retry](https://github.com/spring-projects/spring-retry)
+以Netfix Hystrix 熔断器为例子
+低级失误：subuser 引用suser-client,一直修改subuser.feign包内的回调类  
+修改引用之后要添加扫描包 否则找不到fallback类
+feign 自带hystrix （熔断器），只需要实现客户端接口里的方法，并且加上fallback就可以了
+
+## 添加网关
+以spring cloud gateway为例子
+
+# 添加spring boot admin 
+报错
+org.springframework.core.annotation.MergedAnnotations$SearchStrategy
+缺少依赖 
+依然是版本问题 
+原来spring-boot-admin-starter-server 2.0.1 springboot :2.0.2
+
+客户端添加依赖
+```xml
+   <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.0.1</version>
+    </dependency>
+```
+添加相应配置spring.boot.admin.client.url=http://localhost:8091

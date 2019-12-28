@@ -25,6 +25,6 @@ public class AccountFeignController implements AccountApi {
     @GetMapping("getAll")
     public String getAll(){
 
-        return "getAll12";
+        return "getAll1-1";
     }
 }

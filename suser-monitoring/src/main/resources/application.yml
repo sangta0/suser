@@ -1,0 +1,36 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: spring-boot-admin
+  profiles:
+    active:
+      - secure
+  cloud:
+    zookeeper:
+      connect-string: 192.168.0.100:2181
+      discovery:
+        instance-host: 192.168.0.105
+        instance-port: 8091
+# tag::configuration-eureka[]
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #<2>
+  endpoint:
+    health:
+      show-details: ALWAYS
+# end::configuration-eureka[]
+
+---
+spring:
+  profiles: insecure
+
+---
+spring:
+  profiles: secure
+  security:
+    user:
+      name: "user"
+      password: "password"
